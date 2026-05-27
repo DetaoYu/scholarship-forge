@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scholarship Forge | AI Application Studio</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace">
+        <header class="masthead">
+          <div>
+            <p class="eyebrow">AI Application Studio</p>
+            <h1>Scholarship Forge</h1>
+            <p class="subhead">面向大学申请的英文 SOP、PS 与 Resume/CV 生成工作台。</p>
+          </div>
+          <div class="status-card">
+            <span class="status-dot"></span>
+            <span id="connectionStatus">Ready</span>
+          </div>
+        </header>
+
+        <section class="grid">
+          <form id="generatorForm" class="panel composer">
+            <div class="panel-head">
+              <span>01</span>
+              <h2>申请目标</h2>
+            </div>
+
+            <div class="segmented" role="radiogroup" aria-label="Document type">
+              <label><input type="radio" name="documentType" value="sop" checked /> <span>SOP</span></label>
+              <label><input type="radio" name="documentType" value="ps" /> <span>PS</span></label>
+              <label><input type="radio" name="documentType" value="resume" /> <span>Resume/CV</span></label>
+            </div>
+
+            <div class="fields">
+              <label>
+                <span>目标学校</span>
+                <input name="targetSchool" placeholder="University of Cambridge" />
+              </label>
+              <label>
+                <span>专业 / 项目</span>
+                <input name="targetProgram" placeholder="MSc Data Science and Machine Learning" />
+              </label>
+              <label>
+                <span>申请阶段</span>
+                <select name="applicationStage">
+                  <option>Master's application</option>
+                  <option>Undergraduate application</option>
+                  <option>PhD application</option>
+                  <option>Scholarship application</option>
+                  <option>Transfer application</option>
+                </select>
+              </label>
+              <label>
+                <span>语气风格</span>
+                <select name="tone">
+                  <option>Academic, confident, sincere</option>
+                  <option>Research-driven and precise</option>
+                  <option>Warm, reflective, personal</option>
+                  <option>Concise, professional, ATS-friendly</option>
+                </select>
+              </label>
+            </div>
+
+            <label class="notes">
+              <span>补充说明</span>
+              <textarea name="extraNotes" placeholder="例如：希望突出科研经历、跨专业动机、某段实习、未来职业规划。"></textarea>
+            </label>
+
+            <div class="panel-head secondary">
+              <span>02</span>
+              <h2>学生材料</h2>
+            </div>
+
+            <label class="dropzone" id="dropzone">
+              <input id="fileInput" type="file" accept=".txt,.pdf,.docx,text/plain,application/pdf,application/vnd.openxmlformats-officedocument.wordprocessingml.document" />
+              <strong>上传 TXT / PDF / DOCX</strong>
+              <small id="fileStatus">或直接在下方粘贴学生背景、成绩、经历、草稿、学校要求。</small>
+            </label>
+
+            <textarea id="materialText" class="materials" placeholder="粘贴学生材料..."></textarea>
+
+            <button class="primary" type="submit">
+              <span class="button-icon">AI</span>
+              Generate Application Draft
+            </button>
+          </form>
+
+          <section class="panel result-panel">
+            <div class="panel-head">
+              <span>03</span>
+              <h2>生成结果</h2>
+            </div>
+            <div class="result-toolbar">
+              <button id="copyButton" class="ghost" type="button">Copy</button>
+              <button id="downloadTxtButton" class="ghost" type="button">TXT</button>
+              <button id="downloadMdButton" class="ghost" type="button">MD</button>
+            </div>
+            <textarea id="resultText" class="result" placeholder="生成后的英文文书会显示在这里，可继续编辑、复制或下载。"></textarea>
+          </section>
+
+          <aside class="panel history-panel">
+            <div class="panel-head">
+              <span>04</span>
+              <h2>最近 5 条</h2>
+            </div>
+            <div id="historyList" class="history-list"></div>
+          </aside>
+        </section>
+      </section>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
